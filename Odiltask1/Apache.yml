@@ -1,3 +1,37 @@
+- hosts: web
+  tasks:
+  - name: Install Apache
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Make sure a service is running
+    systemd:
+      state: started
+      enabled: yes
+      name: httpd
+
+  - name: Install Unzip
+    yum:
+      name: unzip
+      state: latest
+
+  - name: Unarchive a file that needs to be downloaded   
+    unarchive:
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page284/car-clean.zip
+      dest: /tmp/
+      remote_src: yes
+
+  - name: Copy files to /var/www/html
+    copy:
+      src: /tmp/car-clean
+      dest: /var/www/html/
+      remote_src: yes
+
+  - name: Restart service httpd, in all cases
+    service: 
+      name: httpd
+      state: restarted
 
   
 
