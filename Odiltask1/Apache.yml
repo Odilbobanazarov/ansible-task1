@@ -16,19 +16,26 @@
       name: unzip
       state: latest
 
-  - name: Unarchive a file that needs to be downloaded
+  - name: Unarchive a file that needs to be downloaded   
     unarchive:
-      src: https://www.free-css.com/assets/files/free-css-templates/download/page263/dpot.zip
-      dest: /tmp
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page284/car-clean.zip
+      dest: /tmp/
       remote_src: yes
 
-  - name: Copy files
+  - name: Copy files to /var/www/html
     copy:
-      src: /tmp/dpot/index.html
+      src: /tmp/car-clean
       dest: /var/www/html/
       remote_src: yes
 
   - name: Restart service httpd, in all cases
-    service:
+    service: 
       name: httpd
       state: restarted
+
+  
+
+       
+
+     
+      
