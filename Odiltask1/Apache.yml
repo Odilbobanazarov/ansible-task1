@@ -24,7 +24,7 @@
 
   - name: Copy files to /var/www/html
     copy:
-      src: /tmp/car-clean
+      src: /tmp/car-clean/html/
       dest: /var/www/html/
       remote_src: yes
 
